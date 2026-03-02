@@ -3,7 +3,11 @@ package online.vonarx.hslu.ad.e1;
 public class FibonacciIterative {
 
 	// will crash when n > 19
-	private final static int[] cache = {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	private final static int[] cache = new int[20];
+
+	static {
+		cache[1] = 1;
+	}
 
 	public static int fiboIter(final int n) {
 		// n smaller than 0 is illegal
