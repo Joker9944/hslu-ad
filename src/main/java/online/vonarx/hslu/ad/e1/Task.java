@@ -23,12 +23,9 @@ public class Task {
 				task3();
 			}
 		}
-		System.out.printf("task1 total count: %s%n", countTask1);
-		System.out.printf("task1 calls per iteration %s%n", countTask1 / 4);
+		System.out.printf("task1 count: %s%n", countTask1);
 		System.out.printf("task2 count: %s%n", countTask2);
-		System.out.printf("task2 calls per iteration %s%n", countTask2 / n / 3);
 		System.out.printf("task3 count: %s%n", countTask3);
-		System.out.printf("task3 calls per iteration %s%n", countTask3 / n / 2);
 	}
 
 	public void task1() {
