@@ -14,16 +14,16 @@ import static org.openjdk.jmh.annotations.Mode.AverageTime;
 @OutputTimeUnit(NANOSECONDS)
 public class TaskBenchmark {
 
-    @Benchmark
-    public void taskBenchmark() {
-        new Task().task(1000000);
-    }
+	@Benchmark
+	public void taskBenchmark() {
+		new Task().task(1000000);
+	}
 
-    public static void main(String[] args) throws Exception {
-        var options = new OptionsBuilder()
-                .include(TaskBenchmark.class.getName())
-                .build();
+	public static void main(String[] args) throws Exception {
+		var options = new OptionsBuilder()
+				.include(TaskBenchmark.class.getName())
+				.build();
 
-        new Runner(options).run();
-    }
+		new Runner(options).run();
+	}
 }
