@@ -1,6 +1,7 @@
 package online.vonarx.hslu.ad.d2.math;
 
 import lombok.NoArgsConstructor;
+import online.vonarx.hslu.ad.d1.j.JOperation;
 import online.vonarx.hslu.ad.d2.math.node.MathNode;
 import online.vonarx.hslu.ad.d2.math.node.operation.OperationNode;
 
@@ -11,14 +12,15 @@ public final class JCompiler {
 
 	public static String compile(final MathNode root) {
 		final var jBuilder = new StringBuilder();
-		compileInternal(jBuilder, root);
+		compileRec(jBuilder, root);
+		jBuilder.append(JOperation.PRINT);
 		return jBuilder.toString();
 	}
 
-	private static void compileInternal(final StringBuilder jBuilder, final MathNode node) {
+	private static void compileRec(final StringBuilder jBuilder, final MathNode node) {
 		if (node instanceof OperationNode opNode) {
-			compileInternal(jBuilder, opNode.left());
-			compileInternal(jBuilder, opNode.right());
+			compileRec(jBuilder, opNode.left());
+			compileRec(jBuilder, opNode.right());
 		}
 		jBuilder.append(node.jInstruction()).append("\n");
 	}
