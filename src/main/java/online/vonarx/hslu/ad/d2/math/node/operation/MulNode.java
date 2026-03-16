@@ -1,11 +1,11 @@
 package online.vonarx.hslu.ad.d2.math.node.operation;
 
 import online.vonarx.hslu.ad.d1.j.JOperation;
-import online.vonarx.hslu.ad.d2.math.node.Node;
+import online.vonarx.hslu.ad.d2.math.node.MathNode;
 
 public class MulNode extends OperationNode {
 
-	public MulNode(Node left, Node right) {
+	public MulNode(MathNode left, MathNode right) {
 		super(left, right);
 	}
 

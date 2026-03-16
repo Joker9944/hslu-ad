@@ -1,12 +1,12 @@
 package online.vonarx.hslu.ad.d2.math.node.operation;
 
 import online.vonarx.hslu.ad.d1.j.JOperation;
-import online.vonarx.hslu.ad.d2.math.node.Node;
+import online.vonarx.hslu.ad.d2.math.node.MathNode;
 
 @SuppressWarnings("unused")
 public class SubNode extends OperationNode {
 
-	public SubNode(Node left, Node right) {
+	public SubNode(MathNode left, MathNode right) {
 		super(left, right);
 	}
 

@@ -1,6 +1,5 @@
 package online.vonarx.hslu.ad.d2.math;
 
-import online.vonarx.hslu.ad.d2.math.node.JCompiler;
 import online.vonarx.hslu.ad.d2.math.node.ValueNode;
 import online.vonarx.hslu.ad.d2.math.node.operation.AddNode;
 import online.vonarx.hslu.ad.d2.math.node.operation.MulNode;

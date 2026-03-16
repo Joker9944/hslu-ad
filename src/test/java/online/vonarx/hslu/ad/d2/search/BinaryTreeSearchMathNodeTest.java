@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BinaryTreeSearchNodeTest {
+class BinaryTreeSearchMathNodeTest {
 
 	public BinaryTreeSearchNode<String> a;
 	public BinaryTreeSearchNode<String> b;

@@ -1,11 +1,11 @@
 package online.vonarx.hslu.ad.d2.math.node.operation;
 
 import lombok.Data;
-import online.vonarx.hslu.ad.d2.math.node.Node;
+import online.vonarx.hslu.ad.d2.math.node.MathNode;
 
 @Data
-public abstract class OperationNode implements Node {
+public abstract class OperationNode implements MathNode {
 
-	private final Node left;
-	private final Node right;
+	private final MathNode left;
+	private final MathNode right;
 }
