@@ -24,7 +24,7 @@ public class StackMachine {
 		return Arrays.stream(program.split("\n"))
 				.map(line -> line.split(" "))
 				.map(tokens -> Command.builder()
-						.operation(Operation.valueOf(tokens[0]))
+						.operation(JOperation.valueOf(tokens[0]))
 						.args(Arrays.copyOfRange(tokens, 1, tokens.length))
 						.build())
 				.toList();
@@ -93,9 +93,5 @@ public class StackMachine {
 		return programCounter >= program.size();
 	}
 
-	private enum Operation {
-		LOAD, ADD, MUL, PRINT, SUB, DIV
-	}
-
-	@Builder private record Command(Operation operation, String[] args) {}
+	@Builder private record Command(JOperation operation, String[] args) {}
 }
