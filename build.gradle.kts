@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.jmhAnnotationProcessor
+
 plugins {
 	id("java")
 	id("io.freefair.lombok") version "9.2.0"
@@ -18,6 +20,8 @@ dependencies {
 
 	implementation("org.apache.logging.log4j:log4j-api:2.25.3")
 	implementation("org.apache.logging.log4j:log4j-core:2.25.3")
+
+	jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.36")
 }
 
 tasks.test {

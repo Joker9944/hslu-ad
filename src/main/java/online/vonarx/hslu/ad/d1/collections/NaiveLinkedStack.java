@@ -6,20 +6,20 @@ import lombok.Getter;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class NaiveLinkedStack<E> {
+public class NaiveLinkedStack<E> implements NaiveStack<E> {
 
 	private Node<E> head;
 
 	@Getter private int size = 0;
 
-	public NaiveLinkedStack<E> push(final E element) {
+	@Override
+	public void push(final E element) {
 		if (head == null) {
 			head = new Node<>(element);
 		} else {
 			head = new Node<>(element, head);
 		}
 		size++;
-		return this;
 	}
 
 	public boolean contains(final E element) {
@@ -33,6 +33,7 @@ public class NaiveLinkedStack<E> {
 		return false;
 	}
 
+	@Override
 	public E pop() {
 		if (head == null) return null;
 
@@ -40,6 +41,11 @@ public class NaiveLinkedStack<E> {
 		head = current.next();
 		size--;
 		return current.element();
+	}
+
+	@Override
+	public boolean full() {
+		return false;
 	}
 
 	public boolean remove(final E element) {

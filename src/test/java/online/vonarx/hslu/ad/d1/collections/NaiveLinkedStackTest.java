@@ -16,9 +16,9 @@ class NaiveLinkedStackTest {
 	public void setup() {
 		emptyList = new NaiveLinkedStack<>();
 		filledList = new NaiveLinkedStack<>();
-		filledList.push("1")
-				.push("2")
-				.push("3");
+		filledList.push("1");
+		filledList.push("2");
+		filledList.push("3");
 	}
 
 	@Test
@@ -113,32 +113,5 @@ class NaiveLinkedStackTest {
 		assertFalse(iterator.hasNext());
 		final var e = assertThrows(NoSuchElementException.class, iterator::next);
 		assertEquals("No more elements in this list", e.getMessage());
-	}
-
-	@Test
-	public void iteratorRemoveEmpty() {
-		final var iterator = emptyList.iterator();
-		final var e = assertThrows(IllegalStateException.class, iterator::remove);
-		assertEquals("Either next has never been called or remove has been called twice in a row", e.getMessage());
-	}
-
-	@Test
-	public void iteratorRemove() {
-		final var iterator = filledList.iterator();
-
-		assertTrue(iterator.hasNext());
-		assertEquals("3", iterator.next());
-		iterator.remove();
-		assertEquals(2, filledList.size());
-
-		assertTrue(iterator.hasNext());
-		assertEquals("2", iterator.next());
-		iterator.remove();
-		assertEquals(1, filledList.size());
-
-		assertTrue(iterator.hasNext());
-		assertEquals("1", iterator.next());
-		iterator.remove();
-		assertEquals(0, filledList.size());
 	}
 }

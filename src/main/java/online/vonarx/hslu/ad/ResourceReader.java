@@ -1,9 +1,12 @@
 package online.vonarx.hslu.ad;
 
+import lombok.experimental.UtilityClass;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class ResourceReader {
+@UtilityClass
+public final class ResourceReader {
 
 	public static String readResource(final String resource) throws IOException {
 		try (final var in = ResourceReader.class.getResourceAsStream(resource)) {
