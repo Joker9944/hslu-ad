@@ -94,13 +94,11 @@ public final class NaiveTombstoneArrayList<E> implements NaiveArrayList<E> {
 	}
 
 	private int calcLeftIndex(final int index) {
-		if (index == 0) return array.length - 1;
-		return index - 1;
+		return (index - 1) % array.length;
 	}
 
 	private int calcRightIndex(final int index) {
-		if (index + 1 == array.length) return 0;
-		return index + 1;
+		return (index + 1) % array.length;
 	}
 
 	private int searchFreeRight(final E element) {
