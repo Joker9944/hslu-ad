@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import static java.util.Arrays.asList;
-import static online.vonarx.hslu.ad.ResourceReader.readResource;
+import static online.vonarx.hslu.ad.ResourceReader.readResourceAsString;
 
 @FunctionalInterface
 interface HashFunction {
@@ -50,7 +50,7 @@ public class HashFunctions {
 	}
 
 	public static void main(String[] args) throws IOException {
-		final var words = asList(readResource("/d3/words.txt").split("\n"));
+		final var words = asList(readResourceAsString("/d3/words.txt").split("\n"));
 		System.out.printf("First char collisions: %s%n", countCollisions(firstCharHash, words));
 		System.out.printf("All chars summed collisions: %s%n", countCollisions(allCharsAddHash, words));
 		System.out.printf("All chars multiplied collisions: %s%n", countCollisions(allCharsMulHash, words));

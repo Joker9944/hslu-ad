@@ -15,7 +15,7 @@ public class ExampleMaze {
 	}
 
 	static void doIt(String maze2) throws IOException {
-		final var rawMaze = ResourceReader.readResource(maze2);
+		final var rawMaze = ResourceReader.readResourceAsString(maze2);
 		final var maze = MazeParser.parse(rawMaze);
 		final var solver = new MazeSolver(maze);
 		final var solution = solver.solveRec(new Point(0, 0));
