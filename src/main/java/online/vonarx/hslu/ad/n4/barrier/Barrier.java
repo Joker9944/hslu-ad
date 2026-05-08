@@ -14,7 +14,7 @@ public class Barrier {
 	}
 
 	public void waitForThreads() throws InterruptedException {
-		boolean isLastThread;
+		final boolean isLastThread;
 		synchronized (lock) {
 			count++;
 			isLastThread = count == size;

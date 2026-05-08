@@ -2,11 +2,13 @@ package online.vonarx.hslu.ad.n4.pipeline;
 
 import lombok.extern.log4j.Log4j2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static java.lang.Thread.interrupted;
 import static java.lang.Thread.sleep;
@@ -22,6 +24,7 @@ public class StringPipeline {
 
 	public static void main(String[] args) {
 		try (final var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+
 			executor.submit(StringPipeline::normalize);
 			executor.submit(StringPipeline::statistics);
 			executor.submit(StringPipeline::print);
@@ -40,7 +43,6 @@ public class StringPipeline {
 				try {
 					sleep(1000);
 				} catch (final InterruptedException e) {
-					log.error(e);
 					break;
 				}
 			}
@@ -50,7 +52,7 @@ public class StringPipeline {
 	private static void normalize() {
 		while (!interrupted()) {
 			try {
-				log.info("normalizing text");
+				log.debug("normalizing text");
 				final var tokens = normalizePhaseQueue.take()
 						.replace("\n", "")
 						.toLowerCase()
@@ -60,10 +62,10 @@ public class StringPipeline {
 				final var normalizedTokens = Arrays.stream(tokens)
 						.filter(string -> !string.isEmpty())
 						.toList();
-				log.info("done normalizing text");
+				log.debug("done normalizing text");
 				statisticsPhaseQueue.put(normalizedTokens);
 			} catch (final InterruptedException e) {
-				log.error(e);
+				log.info("interrupted", e);
 				break;
 			}
 		}
@@ -72,7 +74,7 @@ public class StringPipeline {
 	private static void statistics() {
 		while (!interrupted()) {
 			try {
-				log.info("doing statistics");
+				log.debug("doing statistics");
 				final var tokens = statisticsPhaseQueue.take();
 				var longest = "";
 				var totalLength = 0;
@@ -81,10 +83,10 @@ public class StringPipeline {
 					totalLength += token.length();
 				}
 				final var statistic = new Statistics(tokens.size(), longest, (double) totalLength / tokens.size());
-				log.info("done doing statistics");
+				log.debug("done doing statistics");
 				printPhaseQueue.put(statistic);
 			} catch (final InterruptedException e) {
-				log.error(e);
+				log.info("interrupted", e);
 				break;
 			}
 		}
@@ -93,12 +95,12 @@ public class StringPipeline {
 	private static void print() {
 		while (!interrupted()) {
 			try {
-				log.info("printing statistics");
+				log.debug("printing statistics");
 				final var statistic = printPhaseQueue.take();
 				System.out.println(statistic);
-				log.info("done printing statistics");
+				log.debug("done printing statistics");
 			} catch (final InterruptedException e) {
-				log.error(e);
+				log.info("interrupted", e);
 				break;
 			}
 		}
