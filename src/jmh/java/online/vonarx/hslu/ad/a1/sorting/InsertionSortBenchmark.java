@@ -2,6 +2,7 @@ package online.vonarx.hslu.ad.a1.sorting;
 
 import online.vonarx.hslu.ad.a1.sorting.util.Displayer;
 import online.vonarx.hslu.ad.a1.sorting.util.SampleArrays;
+import online.vonarx.hslu.ad.a1.sorting.util.SortingAlgorithm;
 import org.openjdk.jmh.annotations.*;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
@@ -16,7 +17,7 @@ import static org.openjdk.jmh.annotations.Scope.Benchmark;
 @State(Benchmark)
 public class InsertionSortBenchmark {
 
-	static final InsertionSort algo = new InsertionSort(Displayer.hide);
+	static final SortingAlgorithm algo = new InsertionSort(Displayer.hide);
 
 	@Param({"100", "100000", "200000", "400000"})
 	int n;

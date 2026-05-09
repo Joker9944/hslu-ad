@@ -6,10 +6,10 @@ import online.vonarx.hslu.ad.a1.sorting.util.SortingAlgorithm;
 import java.util.Arrays;
 
 @Log4j2
-class InsertionSortTest extends SortingAlgorithmTest {
+class SelectionSortTest extends SortingAlgorithmTest {
 
 	@Override
 	protected SortingAlgorithm createSortingAlgorithm() {
-		return new InsertionSort(indices -> log.debug(Arrays.toString(indices)));
+		return new SelectionSort(indices -> log.debug(Arrays.toString(indices)));
 	}
 }
