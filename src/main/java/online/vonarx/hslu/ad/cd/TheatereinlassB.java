@@ -52,7 +52,6 @@ public class TheatereinlassB {
 
 	@SneakyThrows
 	public static List<String> getInput() {
-		final var input = ResourceReader.readResourceAsString("/cd/Theatereinlass.txt").split("\n");
-		return List.of(input);
+		return ResourceReader.readResourceAsLines("/cd/Theatereinlass.txt");
 	}
 }

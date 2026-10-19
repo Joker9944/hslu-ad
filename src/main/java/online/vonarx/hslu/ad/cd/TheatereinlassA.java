@@ -29,8 +29,7 @@ public class TheatereinlassA {
 
 	@SneakyThrows
 	public static List<Slice> getInput() {
-		final var input = ResourceReader.readResourceAsString("/cd/Theatereinlass.txt").split("\n");
-		return Arrays.stream(input)
+		return ResourceReader.readResourceAsLines("/cd/Theatereinlass.txt").stream()
 				.map(s -> s.split(" \\| "))
 				.map(parts -> {
 					final var entryPermitted = Integer.parseInt(parts[1]);

@@ -24,7 +24,6 @@ public class BuchstabensalatA {
 
 	@SneakyThrows
 	public static List<String> getInput() {
-		final var input = ResourceReader.readResourceAsString("/cd/Buchstabensalat.txt").split("\n");
-		return List.of(input);
+		return ResourceReader.readResourceAsLines("/cd/Buchstabensalat.txt");
 	}
 }

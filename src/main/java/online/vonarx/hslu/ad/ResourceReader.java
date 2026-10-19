@@ -5,6 +5,7 @@ import lombok.experimental.UtilityClass;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 @UtilityClass
 public final class ResourceReader {
@@ -23,5 +24,9 @@ public final class ResourceReader {
 
 	public static String readResourceAsString(final String resource) throws IOException {
 		return new String(readResourceAsBytes(resource), StandardCharsets.UTF_8);
+	}
+
+	public static List<String> readResourceAsLines(final String resource) throws IOException {
+		return List.of(readResourceAsString(resource).split("\n"));
 	}
 }
